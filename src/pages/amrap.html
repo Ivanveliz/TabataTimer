@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/styles.scss">
+    <title>Amrap</title>
+</head>
+
+<body class="body-for-amrap">
+    <div class="container d-flex flex-column   col-12">
+        <h2 class="text-center m-3">AMRAP</h2>
+        <div class="container d-flex justify-content-end">
+            <a class="pe" href="../index.html"> <i class="bi bi-backspace text-danger fs-1"></i></a>
+        </div>
+        <p>La mayor cantidad de vueltas posibles en el tiempo que selecciones:</p>
+        <div class="container d-flex flex-column   col-6 gap-4">
+            <select id="select" class="form-select disabled" aria-label="Default select example">
+            </select>
+            <div class="col-12 d-flex flex-column align-items-center  justify-content-center ">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center ">
+                        <button id="btn-start-amrap" class="btn btn-danger btn-lg">Comenzar</button>
+                    </div>
+                </div>
+
+                <div class="number col-12 d-flex flex-column align-items-center mt-5  justify-content-center">
+                    <button id="number" class=" btn text-light fs-1 bg-danger btn-round ">01:00</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="../js/amrap.js"></script>
+
+
+
+
+
+
+</html>

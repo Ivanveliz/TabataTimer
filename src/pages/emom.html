@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/styles.scss">
+    <title>EMOM</title>
+</head>
+
+<body class="body-for-emom">
+    <div class="container d-flex flex-column   col-12">
+        <h2 class="text-center m-3 fs-1">EMOM</h2>
+        <div class="container d-flex justify-content-end">
+            <a class="pe" href="../index.html"> <i class="bi bi-backspace text-success fs-1"></i></a>
+        </div>
+        <h3 class="text-center">Elegí los minutos de entrenamiento</h3>
+        <p class="text-center">Todas las repeticiones que puedas hacer dentro del minuto. Durante los minutos que
+            quieras.</p>
+        <div class="container d-flex flex-column   col-6 gap-4">
+            <select id="select" class="form-select disabled" aria-label="Default select example">
+            </select>
+            <div class="col-12 d-flex flex-column align-items-center  justify-content-center ">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center ">
+                        <button id="btn-start-emom" class="btn btn-success btn-lg">Comenzar</button>
+                    </div>
+                </div>
+
+                <div class="number col-12 d-flex flex-column align-items-center mt-3  justify-content-center">
+                    <button id="number" class=" btn text-light fs-1 bg-success btn-round ">01:00</button>
+                    <div class="flex-column align-items-center container-3 justify-content-center gap-2">
+                        <p class="mt-1 pt-1 text-center">Cantidad de rondas: </p>
+                        <div class="bg-success text-center bg-success rounded  mt-1">
+                            <span id="rounds-number" class="p-1 fs-2 "></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../js/emom.js"></script>
+</body>
+
+
+</html>

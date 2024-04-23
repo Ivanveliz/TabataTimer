@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/styles.scss">
+    <title>Tabata</title>
+</head>
+
+<body class="body-for-tabata">
+    <div class="container d-flex flex-column   col-12">
+        <h2 class="text-center m-3">Tabata</h2>
+        <div class="container d-flex justify-content-end">
+            <a class="pe" href="../index.html"> <i class="bi bi-backspace text-warning fs-1"></i></a>
+        </div>
+        <p>Seleccioná vos mismo! el tiempo que quieras </p>
+        <div class="container d-flex flex-column justify-content-center align-items-center  col-10 gap-3">
+
+            <div class="d-flex  col-lg-4 ">
+                <span class="p-2">Trabajo</span><select id="select-work" class="form-select disabled"
+                    aria-label="Default select example">
+                </select>
+            </div>
+            <div class="d-flex col-lg-4 ">
+                <span class="p-1">Pausa</span><select id="select-rest" class="form-select disabled"
+                    aria-label="Default select example">
+                </select>
+            </div>
+            <div id="container-select-rounds" class="d-flex col-lg-4 active">
+                <span class="p-1">Rondas</span><select id="select-rounds" class="form-select disabled"
+                    aria-label="Default select example">
+                </select>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+                <p class=" fs-6 m-0 p-1 ">Tiempo total:</p> <span id="total-time-tabata"
+                    class=" bg-success rounded p-1 fs-5 bg-warning ">30
+                    minutos</span>
+            </div>
+
+            <div class="col-12 d-flex flex-column align-items-center  justify-content-center ">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center ">
+                        <button id="btn-start-tabata" class="btn btn-warning btn-lg">Comenzar</button>
+                    </div>
+                </div>
+
+                <div class="number col-12 d-flex flex-column align-items-center mt-4  justify-content-center">
+                    <button id="number" class=" btn text-light fs-1 bg-warning btn-round ">01:00</button>
+                    <div class="flex-column align-items-center container-3 justify-content-center gap-2">
+                        <p class="mt-1 pt-1 text-center">Cantidad de rondas: </p>
+                        <div class="bg-warning text-center bg-warning rounded  mt-1">
+                            <span id="rounds-number" class="p-1 fs-2 "></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../js/tabata.js"></script>
+</body>
+
+</html>
