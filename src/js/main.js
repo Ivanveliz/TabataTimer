@@ -1,4 +1,3 @@
-// Import our custom CSS
 import { start } from '@popperjs/core'
 import '../scss/styles.scss'
 const buttonStartForTime = document.querySelector('#btn-start-forTime')
