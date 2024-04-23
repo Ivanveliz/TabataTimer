@@ -1,4 +1,3 @@
-import { start } from '@popperjs/core'
 import '../scss/styles.scss'
 const buttonStartForTime = document.querySelector('#btn-start-forTime')
 const buttonStartAmrap = document.querySelector('#btn-start-amrap')
