@@ -1,4 +1,5 @@
 import '../scss/styles.scss'
+import 'bootstrap'
 const buttonStartForTime = document.querySelector('#btn-start-forTime')
 const buttonStartAmrap = document.querySelector('#btn-start-amrap')
 const buttonStartEmom = document.querySelector('#btn-start-emom')
