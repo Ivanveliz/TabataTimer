@@ -26,7 +26,8 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "config-prettier": "^0.3.0"
+    "config-prettier": "^0.3.0",
+    "gh-pages": "^6.1.1"
   },
   "eslintConfig": {
     "extends": "/node_modules/standard/eslintrc.json"
