@@ -1,9 +1,7 @@
 import { calcTotalMinSec } from './main'
-const selectWork = document.querySelector('#select-work')
-const selectRest = document.querySelector('#select-rest')
-const selectRounds = document.querySelector('#select-rounds')
-let totalTimeTabata = document.querySelector('#total-time-tabata')
-function setUpOptionsSec(select) {
+//VARIBLES PARA METODOLOGA TABATA
+
+export function setUpOptionsSec(select) {
   // agrego los segundos:
   const options = Array.from({ length: 60 }, (_, index) => index + 1)
   options.forEach((sec) => {
@@ -13,10 +11,8 @@ function setUpOptionsSec(select) {
     select.appendChild(option)
   })
 }
-setUpOptionsSec(selectRest)
-setUpOptionsSec(selectWork)
 
-function setUpOptionsRounds(select) {
+export function setUpOptionsRounds(select) {
   // agrego los segundos:
   const options = Array.from({ length: 30 }, (_, index) => index + 1)
   options.forEach((sec) => {
@@ -27,16 +23,19 @@ function setUpOptionsRounds(select) {
   })
 }
 
-setUpOptionsRounds(selectRounds)
-
 //sacar total de tiempo de trabajo:
-function updateTotalTime() {
+export function updateTotalTimeTabata(
+  selectRest,
+  selectWork,
+  selectRounds,
+  totalTimeTabata,
+) {
   let totalSecTabata =
     (Number(selectRest.value) + Number(selectWork.value)) *
     Number(selectRounds.value)
 
   let timeTabata = calcTotalMinSec(totalSecTabata)
-
+  console.log(timeTabata)
   let minutesBrowser
   let secondsBrowser
   minutesBrowser =
@@ -49,8 +48,3 @@ function updateTotalTime() {
       : timeTabata.secondsLeft
   totalTimeTabata.textContent = minutesBrowser + secondsBrowser
 }
-
-updateTotalTime()
-selectRest.addEventListener('change', updateTotalTime)
-selectWork.addEventListener('change', updateTotalTime)
-selectRounds.addEventListener('change', updateTotalTime)
