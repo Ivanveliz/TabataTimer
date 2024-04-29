@@ -74,7 +74,6 @@ function rederHTML(url) {
           buttonStartForTime.disabled = true
           countDown(buttonStartForTime)
           buttonStartForTime.disabled = false
-          console.log(counter)
         })
       } else if (buttonStartAmrap) {
         setUpOptions(select)
@@ -101,7 +100,6 @@ function rederHTML(url) {
             Number(totalRoundsTabata.value)
 
           let timeTabata = calcTotalMinSec(totalSecTabata)
-
           minutesBrowserTabata =
             timeTabata.minutes < 10
               ? `0${timeTabata.minutes}:`
@@ -112,11 +110,18 @@ function rederHTML(url) {
               : timeTabata.secondsLeft
           totalTimeTabata.textContent =
             minutesBrowserTabata + secondsBrowserTataba
+          counter.textContent = minutesBrowserTabata + secondsBrowserTataba
         }
         updateTotalTimeTabata()
         selectRestTabata.addEventListener('change', updateTotalTimeTabata)
         selectWorkTabata.addEventListener('change', updateTotalTimeTabata)
         totalRoundsTabata.addEventListener('change', updateTotalTimeTabata)
+
+        buttonStartabata.addEventListener('click', function () {
+          buttonStartabata.disabled = true
+          countDown(buttonStartabata)
+          buttonStartabata.disabled = false
+        })
       }
     })
 }
@@ -205,29 +210,24 @@ function startTimefortime() {
 }
 
 function startTimeForTabata() {
-  containerSelectRounds.classList.add('d-none')
-  buttonStartabata.disabled = true
-
   const secondsWork = selectWorkTabata.value
   const secondsRest = selectRestTabata.value
   let totalSecTabata =
     parseFloat(parseFloat(secondsWork) + parseFloat(secondsRest)) *
     totalRoundsTabata.value
 
-  console.log(totalSecTabata)
-
   function startRounds() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let currentRound = 1
+      let roundsTabata = document.querySelector('#rounds-number')
       function startNextRounds() {
         if (currentRound <= totalRoundsTabata.value) {
           let currentCounter = secondsWork
+          roundsTabata.textContent = currentRound
 
           let cronometro = setInterval(function () {
             let minutesBrowser
             let secondsBrowser
-
-            currentCounter--
             const time = calcTotalMinSec(currentCounter)
             minutesBrowser =
               time.minutes < 10 ? `0${time.minutes}` : `${time.minutes}`
@@ -236,15 +236,16 @@ function startTimeForTabata() {
                 ? `0${time.secondsLeft}`
                 : `${time.secondsLeft}`
             counter.textContent = `${minutesBrowser} : ${secondsBrowser}`
+            currentCounter--
 
             if (currentCounter === 0) {
               clearInterval(cronometro)
-              currentCounter = secondsRest
+              let currentCounterRest = secondsRest
               cronometro = setInterval(function () {
                 let minutesBrowser
                 let secondsBrowser
-                currentCounter--
-                const time = calcTotalMinSec(currentCounter)
+
+                const time = calcTotalMinSec(currentCounterRest)
                 minutesBrowser =
                   time.minutes < 10 ? `0${time.minutes}` : `${time.minutes}`
                 secondsBrowser =
@@ -252,15 +253,14 @@ function startTimeForTabata() {
                     ? `0${time.secondsLeft}`
                     : `${time.secondsLeft}`
                 counter.textContent = `${minutesBrowser} : ${secondsBrowser}`
+                currentCounterRest--
 
-                if (currentCounter === 0) {
+                if (currentCounterRest === 0) {
                   clearInterval(cronometro)
                   currentRound++
                   startNextRounds()
                 }
               }, 1000)
-              currentRound++
-              startNextRounds()
             }
           }, 1000)
         } else {
@@ -273,8 +273,6 @@ function startTimeForTabata() {
   startRounds(totalRoundsTabata.value).then(() => {
     console.log('Todas las rondas han terminado')
   })
-  buttonStartabata.disabled = false
-  containerSelectRounds.classList.remove('d-none')
 }
 
 function startTimeForAmrap() {
