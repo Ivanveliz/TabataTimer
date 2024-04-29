@@ -126,20 +126,14 @@ function rederHTML(url) {
     })
 }
 
-buttonForTime.addEventListener('click', function () {
-  rederHTML('../pages/forTime.html')
-})
-
-buttonAmrap.addEventListener('click', function () {
-  rederHTML('../pages/amrap.html')
-})
-
-buttonEmom.addEventListener('click', function () {
-  rederHTML('../pages/emom.html')
-})
-
-buttonTabata.addEventListener('click', function () {
-  rederHTML('../pages/tabata.html')
+const buttons = document.querySelectorAll('.btn-link-full')
+console.log(buttons)
+buttons.forEach((button) => {
+  button.addEventListener('click', function () {
+    const page = this.id.replace('btn-', '')
+    console.log(page)
+    rederHTML(`../pages/${page}.html`)
+  })
 })
 
 // creo una cuenta regresiva antes de que empieze el cronometro, y agrego un switch para que se active dependiendo de la metodologia
