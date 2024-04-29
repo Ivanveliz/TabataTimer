@@ -132,7 +132,7 @@ buttons.forEach((button) => {
   button.addEventListener('click', function () {
     const page = this.id.replace('btn-', '')
     console.log(page)
-    rederHTML(`../pages/${page}.html`)
+    rederHTML(`../public/${page}.html`)
   })
 })
 
