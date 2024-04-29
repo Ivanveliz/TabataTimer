@@ -1,6 +1,8 @@
 import { calcTotalMinSec } from './main'
 //VARIBLES PARA METODOLOGA TABATA
 
+let totalTimeTabata = document.querySelector('#total-time-tabata')
+
 export function setUpOptionsSec(select) {
   // agrego los segundos:
   const options = Array.from({ length: 60 }, (_, index) => index + 1)
@@ -24,12 +26,7 @@ export function setUpOptionsRounds(select) {
 }
 
 //sacar total de tiempo de trabajo:
-export function updateTotalTimeTabata(
-  selectRest,
-  selectWork,
-  selectRounds,
-  totalTimeTabata,
-) {
+export function updateTotalTimeTabata(selectRest, selectWork, selectRounds) {
   let totalSecTabata =
     (Number(selectRest.value) + Number(selectWork.value)) *
     Number(selectRounds.value)

@@ -54,7 +54,6 @@ function rederHTML(url) {
     .then((html) => {
       document.body.innerHTML = html
       const select = document.querySelector('#select')
-
       buttonStartAmrap = document.querySelector('#btn-start-amrap')
       buttonStartForTime = document.querySelector('#btn-start-for-time')
       buttonStartabata = document.querySelector('#btn-start-tabata')
@@ -64,6 +63,10 @@ function rederHTML(url) {
       selectRestTabata = document.querySelector('#select-rest')
       totalRoundsTabata = document.querySelector('#select-rounds')
       totalTimeTabata = document.querySelector('#total-time-tabata')
+      counter = document.querySelector('#number')
+
+      let minutesBrowserTabata
+      let secondsBrowserTataba
 
       if (buttonStartForTime) {
         setUpOptions(select)
@@ -71,6 +74,7 @@ function rederHTML(url) {
           buttonStartForTime.disabled = true
           countDown(buttonStartForTime)
           buttonStartForTime.disabled = false
+          console.log(counter)
         })
       } else if (buttonStartAmrap) {
         setUpOptions(select)
@@ -90,13 +94,26 @@ function rederHTML(url) {
         setUpOptionsSec(selectRestTabata)
         setUpOptionsSec(selectWorkTabata)
         setUpOptionsRounds(totalRoundsTabata)
-        updateTotalTimeTabata(
-          selectRestTabata,
-          selectWorkTabata,
-          totalRoundsTabata,
-          totalTimeTabata,
-        )
 
+        function updateTotalTimeTabata() {
+          let totalSecTabata =
+            (Number(selectRestTabata.value) + Number(selectWorkTabata.value)) *
+            Number(totalRoundsTabata.value)
+
+          let timeTabata = calcTotalMinSec(totalSecTabata)
+
+          minutesBrowserTabata =
+            timeTabata.minutes < 10
+              ? `0${timeTabata.minutes}:`
+              : `${timeTabata.minutes}:`
+          secondsBrowserTataba =
+            timeTabata.secondsLeft < 10
+              ? `0${timeTabata.secondsLeft}`
+              : timeTabata.secondsLeft
+          totalTimeTabata.textContent =
+            minutesBrowserTabata + secondsBrowserTataba
+        }
+        updateTotalTimeTabata()
         selectRestTabata.addEventListener('change', updateTotalTimeTabata)
         selectWorkTabata.addEventListener('change', updateTotalTimeTabata)
         totalRoundsTabata.addEventListener('change', updateTotalTimeTabata)
